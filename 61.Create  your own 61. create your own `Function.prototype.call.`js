@@ -1,0 +1,12 @@
+Function.prototype.mycall = function (thisArg, ...args) {
+  const func = this;
+  const newFunc = func.bind(thisArg)
+  return newFunc(...args);
+};
+const func = function(num1, num2) {
+  return this.a + num1 + num2
+}
+const obj = {
+  a: 1,
+}
+console.log(func.mycall(obj, 1, 2));
