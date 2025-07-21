@@ -28,3 +28,22 @@ function all(promises) {
     }
   })
 }
+
+
+// Using async await syntax
+
+/**
+ * @param {Array<any>} promises - notice input might have non-Promises
+ * @return {Promise<any[]>}
+ */
+async function all(promises) {
+  const results = [];
+  for (let i = 0; i < promises.length; i++) {
+    try {
+      results[i] = await Promise.resolve(promises[i]);
+    } catch (err) {
+      throw err;
+    }
+  }
+  return results;
+}
